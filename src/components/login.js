@@ -11,7 +11,7 @@ const Login = () => {
     margin: "20px auto",
   };
   const avatrStyle = { backgroundColor: "green" };
-  //  const buttonstlye={backgroundColor:'green'}
+
 
   return (
     <Grid>
