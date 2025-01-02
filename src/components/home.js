@@ -29,11 +29,11 @@ const pages = [
     name: "Challenges",
     id: "challenge",
     dropdown: [
-      { label: "Add Challenge", path: "/add-challenge" },
+      { label: "Add Challenge", path: "/addChallenge" },
       { label: "Get All Challenges", path: "/challenges" },
-      { label: "Get Challenge By Id", path: "/challenge/:id" },
-      { label: "Update Challenge", path: "/update-challenge" },
-      { label: "Delete Challenge", path: "/delete-challenge" },
+      { label: "Get Challenge By Id", path: "/challengeSearch" },
+      { label: "Update Challenge", path: "/challenges" },
+      { label: "Delete Challenge", path: "/challenges" },
     ],
   },
   {

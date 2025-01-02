@@ -25,10 +25,10 @@ export const WELLNESS_REGISTRATION_REGISTER = 'http://localhost:9091/api/wellnes
 //challenge-controller
 
 export const GET_ALL_CHALLENGES ='http://localhost:9091/api/employeewellness/getallchallenges';
-export const GET_CHALLENGE_BY_ID ='http://localhost:9091/api/employeewellness/ChallengesDetails/{challId}';
+export const GET_CHALLENGE_BY_ID ='http://localhost:9091/api/employeewellness/ChallengesDetails/';
 export const ADD_CHALLENGE ='http://localhost:9091/api/employeewellness/addChal';
 export const UPDATE_CHALLENGE ='http://localhost:9091/api/employeewellness/updateChallenge';
-export const DELETE_CHALLENGE='http://localhost:9091/api/employeewellness/deleteChallenge/{challeId}';
+export const DELETE_CHALLENGE='http://localhost:9091/api/employeewellness/deleteChallenge/';
 
 
 //Challenge-registration-controller
