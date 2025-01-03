@@ -40,11 +40,11 @@ const pages = [
     name: "Wellness Program",
     id: "wellnessprogram",
     dropdown: [
-      { label: "Add Wellness Program", path: "/add-wellness-program" },
-      { label: "Get All Wellness Programs", path: "/wellness-programs" },
-      { label: "Get Wellness Program By Id", path: "/wellness-program/:id" },
-      { label: "Update Wellness Program", path: "/update-wellness-program" },
-      { label: "Delete Wellness Program", path: "/delete-wellness-program" },
+      { label: "Add Wellness Program", path: "/addWellnessprogram" },
+      { label: "Get All Wellness Programs", path: "/wellnessProgram" },
+      { label: "Get Wellness Program By Id", path: "/WellnessSearch" },
+      { label: "Update Wellness Program", path: "/wellnessProgram" },
+      { label: "Delete Wellness Program", path: "/wellnessProgram" },
     ],
   },
   {

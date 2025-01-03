@@ -10,10 +10,10 @@ export const DELETE_EMPLOYEE='http://localhost:9091/api/employeewellness/remove/
 //Wellness-program-controller
 
 export const GET_ALL_WELLNESSPROGRAMS ='http://localhost:9091/api/wellnessprogram/getAllWellness';
-export const GET_WELLNESSPROGRAM_BY_ID ='http://localhost:9091/api/wellnessprogram/getWellnessById/{wellId}';
+export const GET_WELLNESSPROGRAM_BY_ID ='http://localhost:9091/api/wellnessprogram/getWellnessById/';
 export const ADD_WELLNESSPROGRAM ='http://localhost:9091/api/wellnessprogram/addWell';
 export const UPDATE_WELLNESSPROGRAM ='http://localhost:9091/api/wellnessprogram/updateWellness';
-export const DELETE_WELLNESSPROGRAM ='http://localhost:9091/api/wellnessprogram/removeWellness/{wellId}';
+export const DELETE_WELLNESSPROGRAM ='http://localhost:9091/api/wellnessprogram/removeWellness/';
 
 //wellness-program-registration
 

@@ -12,6 +12,11 @@ import ChallengeHome from "./components/ChallengeHome";
 import ChallengeRead from "./components/ChallengeRead";
 import ChallengeUpdate from "./components/ChallengeUpdate";
 import ChallengeSearch from "./components/ChallengeSearch";
+import AddWellnessProgram from "./components/AddWellnessprogram";
+import WellnessHome from "./components/WellnessHome";
+import WellnessProgramRead from "./components/WellnessProgramRead";
+import WellnessUpdate from "./components/WellnessUpdate";
+import WellnessSearch from "./components/WellnessSearch";
 
 
 function App() {
@@ -33,7 +38,14 @@ function App() {
         <Route path="/challengeUpdate/:challengeId" element={<ChallengeUpdate/>}/>
         <Route path="/challengeSearch" element={<ChallengeSearch/>}/>
 
-        {/* Add other routes */}
+        {/* wellness program */}
+
+       <Route path="/addWellnessprogram" element={<AddWellnessProgram/>}/>
+       <Route path="/wellnessProgram" element={<WellnessHome/>}/>
+       <Route path="/wellnessProgramRead/:wellnessProgramId" element={<WellnessProgramRead/>}/>
+       <Route path="/wellnessUpdate/:wellnessProgramId" element={<WellnessUpdate/>}/>
+       <Route path="/wellnessSearch" element={<WellnessSearch/>}/>
+       
       </Routes>
     </Router>
   );
