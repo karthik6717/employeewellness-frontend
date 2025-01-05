@@ -51,20 +51,22 @@ const pages = [
     name: "Events",
     id: "events",
     dropdown: [
-      { label: "Add Events", path: "/add-event" },
-      { label: "Get All Events", path: "/events" },
-      { label: "Get Event By Id", path: "/event/:id" },
-      { label: "Update Event", path: "/update-event" },
-      { label: "Delete Event", path: "/delete-event" },
+      { label: "Add Events", path: "/addEvent" },
+      { label: "Get All Events", path: "/event" },
+      { label: "Get Event By Id", path: "/eventSearch" },
+      { label: "Update Event", path: "/event" },
+      { label: "Delete Event", path: "/event" },
     ],
   },
   {
     name: "Doctor appointment",
     id: "doctor",
     dropdown: [
-      { label: "Add Doctor", path: "/add-doctor" },
-      { label: "Update Doctor", path: "/update-doctor" },
-      { label: "Delete doctor", path: "/delete-doctor" },
+      { label: "Get All Doctors", path: "/doctor" },
+      { label: "Add Doctor", path: "/addDoctor" },
+      { label: "Get doctor By Id", path: "/doctorSearch" },
+      { label: "Update Doctor", path: "/doctor" },
+      { label: "Delete doctor", path: "/doctor" },
     ],
   },
 ];
@@ -87,6 +89,11 @@ function Home() {
   const handleNavigate = (path) => {
     navigate(path);
     handleMenuClose();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/');
   };
 
   return (
@@ -122,6 +129,10 @@ function Home() {
                 </Button>
               </React.Fragment>
             ))}
+
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
           </Stack>
         </Toolbar>
       </Container>

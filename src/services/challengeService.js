@@ -5,6 +5,10 @@ import { ADD_CHALLENGE } from "../constants/apiEndpoints";
 import { UPDATE_CHALLENGE } from "../constants/apiEndpoints";
 import { DELETE_CHALLENGE } from "../constants/apiEndpoints";
 
+//Register Challenge
+import { REGISTER_CHALLENGE } from "../constants/apiEndpoints";
+
+
 export const getAllChallenges = () => {
   const apiURL = GET_ALL_CHALLENGES;
 
@@ -29,9 +33,6 @@ export const addChallenge = (formData) => {
 
 export const updateChallenge = (values) => {
   const apiURL = UPDATE_CHALLENGE;
-
-  console.log(values);
-
   return axios.put(apiURL, values, {
     headers: {
       "Content-Type": "application/json",
@@ -44,3 +45,12 @@ export const deleteChallenge = (challeId) => {
   return axios.delete(apiURL);
 };
 
+//Register Challenge
+export const registerChallenge = (employeeId,challeId, formData) =>{
+  const apiURL = `${REGISTER_CHALLENGE}${employeeId}/${challeId}`;
+  return axios.post(apiURL, formData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

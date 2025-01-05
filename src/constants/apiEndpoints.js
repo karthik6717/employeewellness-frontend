@@ -1,7 +1,7 @@
 
 
 //Employee-Controller
-export const GET_ALL_EMPLOYEES='http://localhost:9091/api/employeewellness/getallemps';
+export const GET_ALL_EMPLOYEES='http://localhost:8765/api/employeewellness/getallemps';
 export const GET_EMPLOYEE_BY_ID='http://localhost:9091/api/employeewellness/';
 export const ADD_EMPLOYEE='http://localhost:9091/api/employeewellness/add';
 export const UPDATE_EMPLOYEE='http://localhost:9091/api/employeewellness/update';
@@ -33,16 +33,16 @@ export const DELETE_CHALLENGE='http://localhost:9091/api/employeewellness/delete
 
 //Challenge-registration-controller
 
-export const REGISTER_CHALLENGE ='http://localhost:9091/api/employeewellness/register/{employeeId}/{challengeId}';
+export const REGISTER_CHALLENGE ='http://localhost:9091/api/employeewellness/challengeregister/';
 
 
 
 //event-controller
 export const GET_ALL_EVENTS ='http://localhost:9091/api/employeewellness/getAllEvents';
-export const GET_EVENT_BY_ID ='http://localhost:9091/api/employeewellness/getEventById/{eventId}';
+export const GET_EVENT_BY_ID ='http://localhost:9091/api/employeewellness/getEventById/';
 export const ADD_EVENT ='http://localhost:9091/api/employeewellness/addEvent';
-export const UPDATE_EVENT ='http://localhost:9091/api/employeewellness/updateEvent/{eventId}';
-export const DELETE_EVENT='http://localhost:9091/api/employeewellness/deleteEvent/{eventId}';
+export const UPDATE_EVENT ='http://localhost:9091/api/employeewellness/updateEvent';
+export const DELETE_EVENT='http://localhost:9091/api/employeewellness/deleteEvent/';
 
 //event-registration
 
@@ -50,10 +50,12 @@ export const EVENT_REGISTRATION ='http://localhost:9091/api/eventRegistration/{e
 
 
 //Doctor-controller
+export const GET_ALL_DOCTORS ='http://localhost:9091/api/employeewellness/getAllDoctors';
+export const GET_DOCTOR_BY_ID ='http://localhost:9091/api/employeewellness/getDoctorById/';
+export const ADD_DOCTOR ='http://localhost:9091/api/employeewellness/addDoctor';
+export const UPDATE_DOCTOR ='http://localhost:9091/api/employeewellness/updateDoctor';
+export const DELETE_DOCTOR='http://localhost:9091/api/employeewellness/remove/';
 
-export const ADD_DOCTOR = ''
 
-
-
-
+export const LOGIN ='http://localhost:9092/api/auth/login'
 

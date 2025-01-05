@@ -17,13 +17,24 @@ import WellnessHome from "./components/WellnessHome";
 import WellnessProgramRead from "./components/WellnessProgramRead";
 import WellnessUpdate from "./components/WellnessUpdate";
 import WellnessSearch from "./components/WellnessSearch";
-
+import AddEvent from "./components/AddEvent";
+import EventHome from "./components/EventHome";
+import EventRead from "./components/EventRead";
+import EventUpdate from "./components/EventUpdate";
+import EventSearch from "./components/EventSearch";
+import AddDoctor from "./components/AddDoctor";
+import DoctorHome from "./components/DoctorHome";
+import DoctorRead from "./components/DoctorRead";
+import DoctorUpdate from "./components/DoctorUpdate";
+import DoctorSearch from "./components/DoctorSearch";
+import Login from "./components/login";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<Login/>}/>
+        <Route path="/dashboard" element={<Home />} />
         <Route path="/add-employee" element={<EmployeeDetails />} />
         <Route path="/employees" element={<EmployeeHome />} />
         <Route path='/employeeRead/:employeeId' element={<EmployeeRead/>}/>
@@ -34,6 +45,7 @@ function App() {
 
         <Route path="/addChallenge" element={<AddChallenge/>}/>
         <Route path="/challenges" element={<ChallengeHome/>}/>
+        <Route path="/challenges/:employeeId" element={<ChallengeHome/>}/>
         <Route path="/challengeRead/:challengeId" element={<ChallengeRead/>}/>
         <Route path="/challengeUpdate/:challengeId" element={<ChallengeUpdate/>}/>
         <Route path="/challengeSearch" element={<ChallengeSearch/>}/>
@@ -45,6 +57,21 @@ function App() {
        <Route path="/wellnessProgramRead/:wellnessProgramId" element={<WellnessProgramRead/>}/>
        <Route path="/wellnessUpdate/:wellnessProgramId" element={<WellnessUpdate/>}/>
        <Route path="/wellnessSearch" element={<WellnessSearch/>}/>
+
+       {/*Event */}
+       <Route path="/addEvent" element={<AddEvent/>}/>
+       <Route path="/event" element={<EventHome/>}/>
+       <Route path="/eventRead/:eventId" element={<EventRead/>}/>
+       <Route path="/eventUpdate/:eventId" element={<EventUpdate/>}/>
+       <Route path="/eventSearch" element={<EventSearch/>}/>
+
+       {/*Event */}
+       <Route path='/addDoctor' element={<AddDoctor/>}/>
+       <Route path='/doctor' element={<DoctorHome/>}/>
+       <Route path='/doctorRead/:doctorId' element={<DoctorRead/>}/>
+       <Route path='/doctorUpdate/:doctorId' element={<DoctorUpdate/>}/>
+       <Route path='/doctorSearch' element={<DoctorSearch/>}/>
+
        
       </Routes>
     </Router>
