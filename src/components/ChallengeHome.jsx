@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAllChallenges, deleteChallenge} from '../services/challengeService';
+import { Link, useParams } from 'react-router-dom';
+import { getAllChallenges, deleteChallenge, registerChallenge} from '../services/challengeService';
 
 function ChallengeHome() {
     const [data, setData] = useState([]);
+    
 
+       const { employeeId } = useParams();
+
+       console.log(" i am here ");
+       console.log(employeeId);
+    
     useEffect(() => {
         getAllChallenges().then((response) => {
             console.log(response.data);
@@ -20,6 +26,18 @@ function ChallengeHome() {
                     window.location.reload();
                 })
                 .catch(err => console.log(err));
+        }
+    };
+  
+    const handleRegister =(employeeId,challengeId) =>{
+        const confirm  = window.confirm("Would you like to Register ths Challenge?");
+        if(confirm)
+        {
+            registerChallenge(employeeId,challengeId)
+            .then(()=>{
+                window.location.reload();
+            })
+            .catch(err=> console.log(err));
         }
     };
 
@@ -65,11 +83,14 @@ function ChallengeHome() {
                                     <td>{d.endDate}</td>
                                     <td>{d.rewardPoints}</td>
                                     <td>{d.description}</td>
+                                   
                                     <td>
                                         <Link to={`/challengeRead/${d.challengeId}`} className='btn btn-sm btn-info me-2'>Read</Link>
                                         <Link to={`/challengeUpdate/${d.challengeId}`} className='btn btn-sm btn-primary me-2'>Edit</Link>
                                         <button onClick={() => handleDelete(d.challengeId)} className='btn btn-sm btn-danger me-2'>Delete</button>
                                         {/* <button onClick={() => handleMarkAsCompleted(d.challengeId)} className='btn btn-sm btn-success'>Mark Completed</button> */}
+                                       
+                                         <button onClick={() => handleRegister(employeeId,d.challengeId)} className='btn btn-sm btn-success'>Register</button> 
                                     </td>
                                 </tr>
                             ))

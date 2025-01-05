@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Button, Grid, Paper, TextField, Typography,Link } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+//import { Password } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { login } from "../services/loginService";
 
 
 const Login = () => {
+
+  const [formData,setFormData] = useState({
+    username:"",
+    password:"",
+  });
+   
+  const navigate = useNavigate();
+
+  const handleChange =(e) =>{
+    const {name,value} = e.target;
+    setFormData({...formData,[name]:value});
+  }
+
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+    try {
+      const response = await login(formData);
+      const token = response.data; // Adjust this line based on the actual response structure
+      localStorage.setItem("token", token);
+      navigate("/dashboard");
+      //alert("Successfully logged in");
+    } catch (error) {
+      console.error("Login failed", error);
+      alert("Login failed");
+    }
+  };
+
+
   const paperStyle = {
     padding: 20,
     height: "70vh",
@@ -25,11 +56,13 @@ const Login = () => {
         </Grid>
         <TextField
           id="outlined-basic"
-          label="Associate Id"
+          label="Username"
+          name="username"
           variant="outlined"
-          placeholder="Enter Associated Id"
+          placeholder="Enter username"
           fullWidth
           required
+          onChange={handleChange}
           color="success"
         
           sx={{ marginBottom: 2 }}
@@ -37,11 +70,13 @@ const Login = () => {
         <TextField
           id="outlined-basic"
           label="Password"
+          name="password"
           type="password"
           variant="outlined"
           placeholder="Enter Password"
           fullWidth
           required
+          onChange={handleChange}
           color="success"
           sx={{ marginBottom: 2 }}
         />
@@ -55,6 +90,7 @@ const Login = () => {
           }}
           variant="contained"
           fullWidth
+          onClick={handleSubmit}
           
         >
           Sign In
