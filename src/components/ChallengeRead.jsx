@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getChallengeById } from "../services/challengeService"; // Import your service function
+import Home from "./home";
 
 function ChallengeRead() {
   const [data, setData] = useState([]);
@@ -14,6 +15,8 @@ function ChallengeRead() {
   }, [challengeId]);
 
   return (
+    <>
+    <Home/>
     <div className="d-flex  justify-content-center align-items-center bg-light">
       <div className="w-50 border bg-white shadow px-5 pt-3 pb-5 round">
         <h3>Details of Challenge</h3>
@@ -44,6 +47,7 @@ function ChallengeRead() {
         </Link>
       </div>
     </div>
+    </>
   );
 }
 

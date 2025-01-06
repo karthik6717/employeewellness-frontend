@@ -5,6 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router-dom";
 import { addDoctor } from "../services/doctorService"; // Adjust based on your service structure
 import { Link } from "react-router-dom";
+import Home from "./home";
 
 const AddDoctor = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +44,8 @@ const AddDoctor = () => {
   };
 
   return (
+    <>
+    <Home/>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Typography variant="h4" textAlign="center" mt={2}>
         <strong>Add New Doctor</strong>
@@ -145,6 +148,7 @@ const AddDoctor = () => {
         </Link>
       </Box>
     </LocalizationProvider>
+    </>
   );
 };
 

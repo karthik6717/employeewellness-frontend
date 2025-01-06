@@ -11,6 +11,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router-dom";
 import { addWellness } from "../services/wellnessprogramService"; // Adjust based on your service structure
 import { Link } from "react-router-dom";
+import Home from "./home";
 
 const AddWellnessProgram = () => {
   const [formData, setFormData] = useState({
@@ -48,6 +49,8 @@ const AddWellnessProgram = () => {
   };
 
   return (
+    <>
+    <Home/>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Typography variant="h4" textAlign="center" mt={2}>
         <strong>Add New Wellness Program</strong>
@@ -159,6 +162,7 @@ const AddWellnessProgram = () => {
         </Link>
       </Box>
     </LocalizationProvider>
+    </>
   );
 };
 

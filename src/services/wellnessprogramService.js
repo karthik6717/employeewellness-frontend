@@ -5,42 +5,94 @@ import { ADD_WELLNESSPROGRAM } from "../constants/apiEndpoints";
 import { UPDATE_WELLNESSPROGRAM} from "../constants/apiEndpoints";
 import { DELETE_WELLNESSPROGRAM } from "../constants/apiEndpoints";
 
-export const getAllWellness = () => {
+export const getAllWellness = async() => {
   const apiURL = GET_ALL_WELLNESSPROGRAMS;
+  try{
+    const response = await axios.get(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
 
-  return axios.get(apiURL);
-};
+    });
+    return response;
+  }catch(error)
+  {
+     console.error('Error in fetching wellnessProgram:',error);
+     throw error;
+  }
+}
 
-export const getWellnessProgramById = (wellnessProgramId) => {
+export const getWellnessProgramById = async(wellnessProgramId) => {
   const apiURL = `${GET_WELLNESSPROGRAM_BY_ID}${wellnessProgramId}`;
 
-  return axios.get(apiURL);
+  try{
+    const response = await axios.get(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in fetching wellnessProgram:',error);
+       throw error;
+  }
 };
 
-export const addWellness = (formData) => {
+export const addWellness = async(formData) => {
   const apiURL = ADD_WELLNESSPROGRAM;
 
-  return axios.post(apiURL, formData, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try{
+    const response = await axios.post(apiURL,formData,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in while adding wellnessProgram:',error);
+       throw error;
+  }
 };
 
-export const updateWellness = (values) => {
+export const updateWellness = async(values) => {
   const apiURL = UPDATE_WELLNESSPROGRAM;
+  try{
+    const response = await axios.put(apiURL,values,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
 
-  console.log(values);
-
-  return axios.put(apiURL, values, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in while updating the wellnessProgram:',error);
+       throw error;
+  }
 };
 
-export const deleteWellness = (wellnessProgramId) => {
+export const deleteWellness = async(wellnessProgramId) => {
   const apiURL = DELETE_WELLNESSPROGRAM + wellnessProgramId;
-  return axios.delete(apiURL);
+  try{
+    const response = await axios.delete(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error while deleting wellnessProgram:',error);
+       throw error;
+  }
 };
 
