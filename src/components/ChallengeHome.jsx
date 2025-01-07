@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   getAllChallenges,
   deleteChallenge,
@@ -7,6 +7,7 @@ import {
 } from "../services/challengeService";
 import Home from "./home";
 import { jwtDecode } from "jwt-decode";
+import RegisteredChallenges from "./RegisteredChallenges";
 
 function ChallengeHome() {
   const [data, setData] = useState([]);
@@ -59,7 +60,7 @@ function ChallengeHome() {
 
   return (
     <>
-      <Home />
+      <Home employeeId={employeeId}/>
       <div className="d-flex flex-column justify-content-center align-items-center bg-light vh-100">
         <h1>List of Challenges</h1>
 
@@ -125,7 +126,9 @@ function ChallengeHome() {
           </table>
         </div>
       </div>
+      <RegisteredChallenges employeeId={employeeId}/>
     </>
+    
   );
 }
 

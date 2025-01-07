@@ -92,7 +92,7 @@ function EmployeeRead() {
           >
             Edit
           </Link>
-          <Link to="/" className="btn btn-primary ms-3">
+          <Link to="/dashboard" className="btn btn-primary ms-3">
             Back
           </Link>
         </div>

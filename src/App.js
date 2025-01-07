@@ -28,6 +28,7 @@ import DoctorRead from "./components/DoctorRead";
 import DoctorUpdate from "./components/DoctorUpdate";
 import DoctorSearch from "./components/DoctorSearch";
 import Login from "./components/login";
+import RegisteredChallenges from "./components/RegisteredChallenges";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/challengeRead/:challengeId" element={<ChallengeRead/>}/>
         <Route path="/challengeUpdate/:challengeId" element={<ChallengeUpdate/>}/>
         <Route path="/challengeSearch" element={<ChallengeSearch/>}/>
+        <Route path="/registeredChallenges" element={<RegisteredChallenges/>}/>
 
         {/* wellness program */}
 

@@ -34,6 +34,7 @@ export const DELETE_CHALLENGE='http://localhost:8765/api/employeewellness/delete
 //Challenge-registration-controller
 
 export const REGISTER_CHALLENGE ='http://localhost:8765/api/employeewellness/challengeregister/';
+export const GET_REGISTERD_CHALLENGES ='http://localhost:8765/api/employeewellness/employee/';
 
 
 

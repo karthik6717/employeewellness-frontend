@@ -5,8 +5,11 @@ import { ADD_CHALLENGE } from "../constants/apiEndpoints";
 import { UPDATE_CHALLENGE } from "../constants/apiEndpoints";
 import { DELETE_CHALLENGE } from "../constants/apiEndpoints";
 
+
 //Register Challenge
 import { REGISTER_CHALLENGE } from "../constants/apiEndpoints";
+import { GET_REGISTERD_CHALLENGES } from "../constants/apiEndpoints";
+
 
 export const getAllChallenges = async () => {
   const apiURL = GET_ALL_CHALLENGES;
@@ -98,4 +101,22 @@ export const registerChallenge = (employeeId, challeId, formData) => {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
   });
+};
+
+
+
+export const getRegisterdChallenges = async (employeeId) => {
+  const apiURL = `${GET_REGISTERD_CHALLENGES}${employeeId}`;
+
+  try {
+    const response = await axios.get(apiURL, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    return response;
+  } catch (error) {
+    console.error("Error in fetching Registered challenges:", error);
+    throw error;
+  }
 };
