@@ -5,6 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router-dom";
 import { addEvent } from "../services/eventService"; // Adjust based on your service structure
 import { Link } from "react-router-dom";
+import Home from "./home";
 
 
 const AddEvent =()=>{
@@ -46,6 +47,8 @@ const AddEvent =()=>{
 
 
     return(
+        <>
+        <Home/>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Typography varient="h4" textAlign="center" mt={2}>
                 <strong>Add new Event</strong>
@@ -119,6 +122,7 @@ const AddEvent =()=>{
              </Link>
          </Box>
         </LocalizationProvider>
+        </>
     );
 };
 

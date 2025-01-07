@@ -5,6 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router-dom";
 import { addChallenge } from "../services/challengeService"; // Adjust based on your service structure
 import { Link } from "react-router-dom";
+import Home from "./home";
 
 const AddChallenge = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +40,8 @@ const AddChallenge = () => {
   };
 
   return (
+    <>
+    <Home/>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Typography variant="h4" textAlign="center" mt={2}>
         <strong>Add New Challenge</strong>
@@ -115,6 +118,7 @@ const AddChallenge = () => {
         </Link>
       </Box>
     </LocalizationProvider>
+    </>
   );
 };
 

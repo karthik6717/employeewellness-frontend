@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { getChallengeById } from '../services/challengeService';
+import Home from './home';
 
 function ChallengeSearch() {
   const [challengeId, setChallengeId] = useState('');
@@ -25,6 +26,8 @@ function ChallengeSearch() {
   };
 
   return (
+    <>
+    <Home/>
     <div className="d-flex flex-column justify-content-center align-items-center bg-light vh-100">
       <h1>Search Challenge By ID</h1>
       <div className="w-50 p-4 bg-white rounded shadow">
@@ -48,6 +51,7 @@ function ChallengeSearch() {
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
     </div>
+    </>
   );
 }
 

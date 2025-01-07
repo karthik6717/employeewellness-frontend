@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getChallengeById, updateChallenge } from '../services/challengeService';
+import Home from './home';
 
 function ChallengeUpdate() {
   const { challengeId } = useParams(); // Get the challenge ID from route params
@@ -40,6 +41,8 @@ function ChallengeUpdate() {
   };
 
   return (
+    <>
+    <Home/>
     <div className="d-flex w-100 justify-content-center align-items-center bg-light">
       <div className="w-50 border bg-white shadow px-5 pt-3 pb-5 rounded">
         <h1>Update Challenge</h1>
@@ -113,6 +116,7 @@ function ChallengeUpdate() {
         </form>
       </div>
     </div>
+    </>
   );
 }
 

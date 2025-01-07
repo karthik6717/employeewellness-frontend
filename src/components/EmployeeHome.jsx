@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { getAllemployees,deleteEmployee} from '../services/employeeService';
+import Home from './home';
 
 //import{EmployeeDetails} from '../components/EmployeeDetails'
 
@@ -13,7 +14,6 @@ function EmployeeHome() {
 
    useEffect(() => {
       getAllemployees().then((response) => {
-         console.log(response.data);
          setData(response.data);
        });
      }, []);
@@ -37,6 +37,8 @@ function EmployeeHome() {
 
 
   return (
+    <>
+    <Home/>
     <div className='d-flex flex-column justify-content-center align-items-center bg-light vh-100'>
         
      <h1>List Of Users</h1>
@@ -61,8 +63,8 @@ function EmployeeHome() {
         </thead>
         <tbody>
             {
-                data.map((d,i)=>(
-                 <tr key={i.employeeId}>
+                data.length > 0 ? data.map((d,i)=>(
+                 <tr key={i}>
                     <td>{d.employeeId}</td>
                     <td>{d.firstName}</td>
                     <td>{d.lastName}</td>
@@ -77,12 +79,13 @@ function EmployeeHome() {
                         <button onClick={e=>handleDelete(d.employeeId)} className='btn btn-sm btn-danger'>Delete</button>
                     </td>
                  </tr>   
-                ))
+                )) : <tr><td colSpan={9}>No Employees Found</td></tr>
             }
         </tbody>
        </table>
        </div>
        </div> 
+       </>
   
   )
   

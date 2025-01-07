@@ -60,7 +60,7 @@ function EmployeeUpdate() {
     try {
       await updateEmployee(values);
       alert("Employee updated successfully");
-      navigate("/");
+      navigate("/employees");
     } catch (error) {
       //console.error("Error updating employee", error);
       alert("Failed to update employee. Please try again.");

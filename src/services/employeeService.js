@@ -5,43 +5,94 @@ import { ADD_EMPLOYEE } from "../constants/apiEndpoints";
 import { UPDATE_EMPLOYEE } from "../constants/apiEndpoints";
 
 
-export const getAllemployees = () => {
+export const getAllemployees = async () => {
   const apiURL = GET_ALL_EMPLOYEES;
+    try{
+      const response = await axios.get(apiURL,{
+        headers:{
+          Authorization: "Bearer "+localStorage.getItem("token"),
+        },
 
-  return axios.get(apiURL);
-};
+      });
+      return response;
+    }catch(error)
+    {
+       console.error('Error in fetching employees:',error);
+       throw error;
+    }
+}
 
-export const getEmployeebyId = (employeeId) => {
+export const getEmployeebyId = async(employeeId) => {
   const apiURL = `${GET_EMPLOYEE_BY_ID}${employeeId}`;
+  try{
+    const response = await axios.get(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
 
-  return axios.get(apiURL);
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in fetching employee:',error);
+       throw error;
+  }
 };
 
-export const addEmployee = (formData) => {
+export const addEmployee = async(formData) => {
   const apiURL = ADD_EMPLOYEE;
+  try{
+    const response = await axios.post(apiURL,formData,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
 
-  return axios.post(apiURL, formData, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in while adding employee:',error);
+       throw error;
+  }
 };
 
-export const updateEmployee = (values) => {
+export const updateEmployee = async(values) => {
   const apiURL = UPDATE_EMPLOYEE;
 
-  console.log(values);
+  try{
+    const response = await axios.put(apiURL,values,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
 
-  return axios.put(apiURL, values, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in while updating the employee:',error);
+       throw error;
+  }
 };
 
-export const deleteEmployee = (employeeId) => {
+export const deleteEmployee = async(employeeId) => {
   const apiURL = DELETE_EMPLOYEE + employeeId;
-  return axios.delete(apiURL);
+  try{
+    const response = await axios.delete(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error while deleting employee:',error);
+       throw error;
+  }
 };
 
 

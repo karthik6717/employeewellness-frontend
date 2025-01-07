@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import { Box, TextField, MenuItem, Button, Typography } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router-dom";
 import { addEmployee } from "../services/employeeService";
-import axios from "axios";
-import { useParams ,Link} from "react-router-dom";
+//import axios from "axios";
+import {  Link} from "react-router-dom";
 
 const GENDERS = ["MALE", "FEMALE", "OTHER"];
 const ROLES = ["ADMIN", "USER"]; // Add actual roles
@@ -32,7 +32,7 @@ const EmployeeDetails = () => {
     sportsInterest: "",
     medicalHistory: "",
     emergencyContact: "",
-    bloodGroup: "",
+    bloodGroup: "N/A",
     maritalStatus: "",
     nationality: "",
     totalRewardPoints: 0,
@@ -51,7 +51,7 @@ const EmployeeDetails = () => {
     e.preventDefault();
     try{
       await addEmployee(formData);
-      navigate("/");
+      navigate("/employees");
       alert("Employee added successfully");
 
     }

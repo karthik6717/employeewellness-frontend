@@ -5,39 +5,95 @@ import { ADD_DOCTOR} from "../constants/apiEndpoints";
 import { UPDATE_DOCTOR } from "../constants/apiEndpoints";
 import { DELETE_DOCTOR } from "../constants/apiEndpoints";
 
-export const getAllDoctors = () => {
+export const getAllDoctors = async() => {
   const apiURL = GET_ALL_DOCTORS;
 
-  return axios.get(apiURL);
+  try{
+    const response = await axios.get(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+    return response;
+  }catch(error)
+  {
+     console.error('Error in fetching doctors:',error);
+     throw error;
+  }
 };
 
-export const getDoctorById = (doctorId) => {
+export const getDoctorById = async(doctorId) => {
   const apiURL = `${GET_DOCTOR_BY_ID}${doctorId}`;
 
-  return axios.get(apiURL);
+  try{
+    const response = await axios.get(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in fetching doctor:',error);
+       throw error;
+  }
 };
 
-export const addDoctor = (formData) => {
+export const addDoctor = async(formData) => {
   const apiURL = ADD_DOCTOR;
 
-  return axios.post(apiURL, formData, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try{
+    const response = await axios.post(apiURL,formData,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in while adding doctor:',error);
+       throw error;
+  }
 };
 
-export const updateDoctor = (values) => {
+export const updateDoctor = async(values) => {
   const apiURL = UPDATE_DOCTOR;
-  return axios.put(apiURL, values, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try{
+    const response = await axios.put(apiURL,values,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error in while updating the doctor:',error);
+       throw error;
+  }
 };
 
-export const deleteDoctor = (doctorId) => {
+export const deleteDoctor = async(doctorId) => {
   const apiURL = DELETE_DOCTOR + doctorId;
-  return axios.delete(apiURL);
+  try{
+    const response = await axios.delete(apiURL,{
+      headers:{
+        Authorization: "Bearer "+localStorage.getItem("token"),
+      },
+
+    });
+  
+  return response;
+  }catch(error)
+  {
+    console.error('Error while deleting doctor:',error);
+       throw error;
+  }
 };
 
