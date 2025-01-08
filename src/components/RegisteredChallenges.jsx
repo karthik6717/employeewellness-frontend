@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import {
   Table,
   TableBody,
@@ -12,15 +12,19 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { getRegisterdChallenges } from "../services/challengeService"; // Import API service
+//import {ChallengeHome} from "./ChallengeHome";
 
-const RegisteredChallenges = ({employeeId}) => {
+// function ChallengeHome(props)
+// {
+//   const employeeId = employeeId;
+// }
+
+const RegisteredChallenges = ({ employeeId }) => {
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  //const employeeId =2;
   console.log(employeeId)
-
 
   useEffect(() => {
     if (employeeId) {
@@ -84,9 +88,8 @@ const RegisteredChallenges = ({employeeId}) => {
   );
 };
 
-RegisteredChallenges.propTypes = {
-    employeeId: PropTypes.number.isRequired, // Validate that employeeId is a required number
-  };
-  
+// RegisteredChallenges.propTypes = {
+//     employeeId: PropTypes.number.isRequired, // Validate that employeeId is a required number
+//   };
 
 export default RegisteredChallenges;

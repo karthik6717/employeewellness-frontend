@@ -130,8 +130,8 @@ function Home() {
     setCurrentDropdown([]);
   };
 
-  const handleNavigate = (path) => {
-    navigate(path);
+  const handleNavigate = (path, props) => {
+    navigate(path, { state: props });
     handleMenuClose();
   };
 
@@ -175,7 +175,7 @@ function Home() {
                   onClick={
                     page.dropdown.length > 0
                       ? (event) => handleMenuOpen(event, page.dropdown)
-                      : null
+                      : () => handleNavigate(page.path, { employeeId })
                   }
                 >
                   {page.name}
@@ -279,7 +279,7 @@ function Home() {
         }}
       >
         {currentDropdown.map((item, index) => (
-          <MenuItem key={index} onClick={() => handleNavigate(item.path)}>
+          <MenuItem key={index} onClick={() => handleNavigate(item.path, { employeeId })}>
             {item.label}
           </MenuItem>
         ))}
