@@ -20,67 +20,10 @@ import {
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import { useNavigate } from "react-router-dom";
 import { getEmployeebyId } from "../services/employeeService";
-import { jwtDecode } from "jwt-decode";
+import  {jwtDecode} from "jwt-decode";
+//import RegisteredChallenges from "./RegisteredChallenges";
 
-const pages = [
-  {
-    name: "Employees",
-    id: "employees",
-    dropdown: [
-      { label: "Add Employee", path: "/add-employee" },
-      { label: "Get All Employees", path: "/employees" },
-      { label: "Get Employee By Id", path: "/employeeSearch" },
-      { label: "Update Employee Details", path: "/employees" },
-      { label: "Delete Employee", path: "/employees" },
-    ],
-  },
-  {
-    name: "Challenges",
-    id: "challenge",
-    dropdown: [
-      { label: "Add Challenge", path: "/addChallenge" },
-      { label: "Get All Challenges", path: "/challenges" },
-      { label: "Get Challenge By Id", path: "/challengeSearch" },
-      { label: "Update Challenge", path: "/challenges" },
-      { label: "Delete Challenge", path: "/challenges" },
-      { label: "Registered Challenges", path: "/registeredChallenges" },
 
-    ],
-  },
-  {
-    name: "Wellness Program",
-    id: "wellnessprogram",
-    dropdown: [
-      { label: "Add Wellness Program", path: "/addWellnessprogram" },
-      { label: "Get All Wellness Programs", path: "/wellnessProgram" },
-      { label: "Get Wellness Program By Id", path: "/WellnessSearch" },
-      { label: "Update Wellness Program", path: "/wellnessProgram" },
-      { label: "Delete Wellness Program", path: "/wellnessProgram" },
-    ],
-  },
-  {
-    name: "Events",
-    id: "events",
-    dropdown: [
-      { label: "Add Events", path: "/addEvent" },
-      { label: "Get All Events", path: "/event" },
-      { label: "Get Event By Id", path: "/eventSearch" },
-      { label: "Update Event", path: "/event" },
-      { label: "Delete Event", path: "/event" },
-    ],
-  },
-  {
-    name: "Doctor appointment",
-    id: "doctor",
-    dropdown: [
-      { label: "Get All Doctors", path: "/doctor" },
-      { label: "Add Doctor", path: "/addDoctor" },
-      { label: "Get doctor By Id", path: "/doctorSearch" },
-      { label: "Update Doctor", path: "/doctor" },
-      { label: "Delete doctor", path: "/doctor" },
-    ],
-  },
-];
 
 function Home() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -115,6 +58,67 @@ function Home() {
   }, [drawerOpen, employeeId, employeeDetails]);
 
 
+  const pages = [
+    {
+      name: "Employees",
+      id: "employees",
+      dropdown: [
+        { label: "Add Employee", path: "/add-employee" },
+        { label: "Get All Employees", path: "/employees" },
+        { label: "Get Employee By Id", path: "/employeeSearch" },
+        { label: "Update Employee Details", path: "/employees" },
+        { label: "Delete Employee", path: "/employees" },
+      ],
+    },
+    {
+      name: "Challenges",
+      id: "challenge",
+      dropdown: [
+        { label: "Add Challenge", path: "/addChallenge" },
+        { label: "Get All Challenges", path: "/challenges" },
+        { label: "Get Challenge By Id", path: "/challengeSearch" },
+        { label: "Update Challenge", path: "/challenges" },
+        { label: "Delete Challenge", path: "/challenges" },
+        { label: "Registered Challenges", path: "/registeredChallenges",state:{employeeId} },
+  
+      ],
+    },
+    {
+      name: "Wellness Program",
+      id: "wellnessprogram",
+      dropdown: [
+        { label: "Add Wellness Program", path: "/addWellnessprogram" },
+        { label: "Get All Wellness Programs", path: "/wellnessProgram" },
+        { label: "Get Wellness Program By Id", path: "/WellnessSearch" },
+        { label: "Update Wellness Program", path: "/wellnessProgram" },
+        { label: "Delete Wellness Program", path: "/wellnessProgram" },
+      ],
+    },
+    {
+      name: "Events",
+      id: "events",
+      dropdown: [
+        { label: "Add Events", path: "/addEvent" },
+        { label: "Get All Events", path: "/event" },
+        { label: "Get Event By Id", path: "/eventSearch" },
+        { label: "Update Event", path: "/event" },
+        { label: "Delete Event", path: "/event" },
+      ],
+    },
+    {
+      name: "Doctor appointment",
+      id: "doctor",
+      dropdown: [
+        { label: "Get All Doctors", path: "/doctor" },
+        { label: "Add Doctor", path: "/addDoctor" },
+        { label: "Get doctor By Id", path: "/doctorSearch" },
+        { label: "Update Doctor", path: "/doctor" },
+        { label: "Delete doctor", path: "/doctor" },
+      ],
+    },
+  ];
+
+
 
 
 //console.log(employeeDetails)
@@ -130,8 +134,8 @@ function Home() {
     setCurrentDropdown([]);
   };
 
-  const handleNavigate = (path) => {
-    navigate(path);
+  const handleNavigate = (path, props) => {
+    navigate(path, { state: props });
     handleMenuClose();
   };
 
@@ -175,7 +179,7 @@ function Home() {
                   onClick={
                     page.dropdown.length > 0
                       ? (event) => handleMenuOpen(event, page.dropdown)
-                      : null
+                      : () => handleNavigate(page.path, { employeeId })
                   }
                 >
                   {page.name}
@@ -253,6 +257,9 @@ function Home() {
         <ListItem button={"true"} onClick={toggleDrawer(false)}>
             <ListItemText primary="Close" />
           </ListItem>
+
+          
+           
       </>
     )
   )}
@@ -279,7 +286,7 @@ function Home() {
         }}
       >
         {currentDropdown.map((item, index) => (
-          <MenuItem key={index} onClick={() => handleNavigate(item.path)}>
+          <MenuItem key={index} onClick={() => handleNavigate(item.path, { employeeId })}>
             {item.label}
           </MenuItem>
         ))}

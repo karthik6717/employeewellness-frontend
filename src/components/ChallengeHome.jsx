@@ -9,17 +9,16 @@ import Home from "./home";
 import { jwtDecode } from "jwt-decode";
 import RegisteredChallenges from "./RegisteredChallenges";
 
+
 function ChallengeHome() {
   const [data, setData] = useState([]);
 
   const employeeData = jwtDecode(localStorage.getItem('token'))
 
   const employeeId = employeeData.employeeId;
-  console.log(employeeId)
 
   useEffect(() => {
     getAllChallenges().then((response) => {
-      console.log(response.data);
       setData(response.data);
     });
   }, []);
@@ -126,7 +125,7 @@ function ChallengeHome() {
           </table>
         </div>
       </div>
-      <RegisteredChallenges employeeId={employeeId}/>
+     <RegisteredChallenges props={employeeId}/>
     </>
     
   );

@@ -35,6 +35,8 @@ export const DELETE_CHALLENGE='http://localhost:8765/api/employeewellness/delete
 
 export const REGISTER_CHALLENGE ='http://localhost:8765/api/employeewellness/challengeregister/';
 export const GET_REGISTERD_CHALLENGES ='http://localhost:8765/api/employeewellness/employee/';
+export const SET_CHALLENGE_AS_COMPLETE ='http://localhost:8765/api/employeewellness/set-status-complete/';
+export const SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS ='http://localhost:8765/api/employeewellness/complete/';
 
 
 
