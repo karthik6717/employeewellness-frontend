@@ -11,7 +11,6 @@ import { SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS } from "../constants/apiEndpoin
 import { REGISTER_CHALLENGE } from "../constants/apiEndpoints";
 import { GET_REGISTERD_CHALLENGES } from "../constants/apiEndpoints";
 
-
 export const getAllChallenges = async () => {
   const apiURL = GET_ALL_CHALLENGES;
 
@@ -104,8 +103,6 @@ export const registerChallenge = (employeeId, challeId, formData) => {
   });
 };
 
-
-
 export const getRegisterdChallenges = async (employeeId) => {
   const apiURL = `${GET_REGISTERD_CHALLENGES}${employeeId}`;
 
@@ -124,19 +121,30 @@ export const getRegisterdChallenges = async (employeeId) => {
 
 // Mark a challenge as complete for an employee
 
-export const markChallengeAsComplete = (employeeId, challeId, challengeStatus) => {
+export const markChallengeAsComplete = (
+  employeeId,
+  challeId,
+  challengeStatus
+) => {
   const apiURL = `${SET_CHALLENGE_AS_COMPLETE}${employeeId}/${challeId}/${challengeStatus}`;
-  return axios.post(apiURL, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
+  return axios.post(
+    apiURL,
+    {},
+    {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    }
+  );
 };
 
+// Complete challenges and add reward points
 
- // Complete challenges and add reward points
-
- export const setChallengesAsCompleteAddRewardPoints = (employeeId, challeId, challengeStatus) => {
+export const setChallengesAsCompleteAddRewardPoints = (
+  employeeId,
+  challeId,
+  challengeStatus
+) => {
   const apiURL = `${SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS}${employeeId}/${challeId}/${challengeStatus}`;
   return axios.post(apiURL, {
     headers: {

@@ -125,7 +125,7 @@ function ChallengeHome() {
           </table>
         </div>
       </div>
-     <RegisteredChallenges employeeId={employeeId}/>
+     <RegisteredChallenges props={employeeId}/>
     </>
     
   );
