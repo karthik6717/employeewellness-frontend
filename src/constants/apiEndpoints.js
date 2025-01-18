@@ -17,8 +17,8 @@ export const DELETE_WELLNESSPROGRAM ='http://localhost:8765/api/wellnessprogram/
 
 //wellness-program-registration
 
-export const WELLNESS_REGISTRATION_REGISTER = 'http://localhost:8765/api/wellnessRegistration/register/{employeeId}/{wellnessProgramId}';
-
+export const WELLNESS_REGISTRATION_REGISTER = 'http://localhost:8765/api/wellnessRegistration/register/';
+export const GET_REGISTERED_WELLNESSPROGRAMS = 'http://localhost:8765/api/wellnessRegistration/registeredWellnessPrograms/';
 
 
 
@@ -49,7 +49,8 @@ export const DELETE_EVENT='http://localhost:8765/api/employeewellness/deleteEven
 
 //event-registration
 
-export const EVENT_REGISTRATION ='http://localhost:8765/api/eventRegistration/{employeeId}/{eventId}';
+export const EVENT_REGISTRATION ='http://localhost:8765/api/eventRegistration/registerEvent/';
+export const GET_REGISTERED_EVENTS ='http://localhost:8765/api/eventRegistration/registeredEvents/';
 
 
 //Doctor-controller
