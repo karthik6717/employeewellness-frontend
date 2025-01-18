@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllWellness, deleteWellness } from '../services/wellnessprogramService';
+import { getAllWellness, deleteWellness, registerWellnessProgram } from '../services/wellnessprogramService';
+
+import { useLocation } from "react-router-dom";
 
 function WellnessHome() {
     const [data, setData] = useState([]);
+
+     //employeeId 
+      const location = useLocation();
+      const { employeeId } = location.state || {};
 
     useEffect(() => {
         getAllWellness().then((response) => {
@@ -22,6 +28,18 @@ function WellnessHome() {
                 .catch(err => console.log(err));
         }
     };
+
+    const handleRegister = (employeeId, wellnessProgramId) => {
+        const confirm = window.confirm("Would you like to Register ths wellness program?");
+        if (confirm) {
+          registerWellnessProgram(employeeId, wellnessProgramId)
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((err) => console.log(err));
+        }
+      };
+
 
     return (
         <div className='d-flex flex-column justify-content-center align-items-center bg-light vh-100'>
@@ -63,6 +81,7 @@ function WellnessHome() {
                                         <Link to={`/wellnessProgramRead/${d.wellnessProgramId}`} className='btn btn-sm btn-info me-2'>Read</Link>
                                         <Link to={`/wellnessUpdate/${d.wellnessProgramId}`} className='btn btn-sm btn-primary me-2'>Edit</Link>
                                         <button onClick={() => handleDelete(d.wellnessProgramId)} className='btn btn-sm btn-danger me-2'>Delete</button>
+                                        <button onClick={() => handleRegister(employeeId, d.wellnessProgramId)} className="btn btn-sm btn-success">Register</button>
                                     </td>
                                 </tr>
                             ))

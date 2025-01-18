@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllEvents, deleteEvent } from '../services/eventService'; // Assuming services are implemented
+import { getAllEvents, deleteEvent, registerEvent } from '../services/eventService'; // Assuming services are implemented
+
+import { useLocation } from "react-router-dom";
 
 function EventHome() {
     const [data, setData] = useState([]);
+
+     //employeeId 
+          const location = useLocation();
+          const { employeeId } = location.state || {};
 
     useEffect(() => {
         getAllEvents().then((response) => {
@@ -23,6 +29,23 @@ function EventHome() {
                 .catch(err => console.error(err));
         }
     };
+
+
+    const handleRegister = (employeeId,eventId ) => {
+            const confirm = window.confirm("Would you like to Register ths Event?");
+            if (confirm) {
+              registerEvent(employeeId, eventId)
+                .then(() => {
+                  window.location.reload();
+                })
+                .catch((err) => console.log(err));
+            }
+          };
+
+
+
+
+
 
     return (
         <div className='d-flex flex-column justify-content-center align-items-center bg-light vh-100'>
@@ -59,6 +82,7 @@ function EventHome() {
                                         <Link to={`/eventRead/${event.eventId}`} className='btn btn-sm btn-info me-2'>Read</Link>
                                         <Link to={`/eventUpdate/${event.eventId}`} className='btn btn-sm btn-primary me-2'>Edit</Link>
                                         <button onClick={() => handleDelete(event.eventId)} className='btn btn-sm btn-danger'>Delete</button>
+                                        <button onClick={() => handleRegister(employeeId, event.eventId)} className="btn btn-sm btn-success">Register</button>
                                     </td>
                                 </tr>
                             ))

@@ -88,10 +88,11 @@ function Home() {
       id: "wellnessprogram",
       dropdown: [
         { label: "Add Wellness Program", path: "/addWellnessprogram" },
-        { label: "Get All Wellness Programs", path: "/wellnessProgram" },
+        { label: "Get All Wellness Programs", path: "/wellnessProgram" ,state:{employeeId} },
         { label: "Get Wellness Program By Id", path: "/WellnessSearch" },
         { label: "Update Wellness Program", path: "/wellnessProgram" },
         { label: "Delete Wellness Program", path: "/wellnessProgram" },
+        {label : "Registered Wellness Programs", path:"/registeredWellness",state:{employeeId}}
       ],
     },
     {
@@ -99,10 +100,11 @@ function Home() {
       id: "events",
       dropdown: [
         { label: "Add Events", path: "/addEvent" },
-        { label: "Get All Events", path: "/event" },
+        { label: "Get All Events", path: "/event",state:{employeeId} },
         { label: "Get Event By Id", path: "/eventSearch" },
         { label: "Update Event", path: "/event" },
         { label: "Delete Event", path: "/event" },
+        {label : "Registered Events", path:"/registeredEvents",state:{employeeId}}
       ],
     },
     {

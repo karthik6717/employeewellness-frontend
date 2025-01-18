@@ -4,6 +4,8 @@ import { GET_EVENT_BY_ID } from "../constants/apiEndpoints";
 import { ADD_EVENT } from "../constants/apiEndpoints";
 import { UPDATE_EVENT } from "../constants/apiEndpoints";
 import { DELETE_EVENT } from "../constants/apiEndpoints";
+import { EVENT_REGISTRATION } from "../constants/apiEndpoints";
+import { GET_REGISTERED_EVENTS } from "../constants/apiEndpoints";
 
 export const getAllEvents = async()=>{
     const apiURL = GET_ALL_EVENTS;
@@ -92,4 +94,30 @@ export const deleteEvent = async(eventId) =>{
         console.error('Error while deleting event:',error);
            throw error;
       }
+};
+
+//events Registration
+export const registerEvent = (employeeId, eventId, formData) => {
+  const apiURL = `${EVENT_REGISTRATION}${employeeId}/${eventId}`;
+  return axios.post(apiURL, formData, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+};
+
+export const getRegisterdEvents = async (employeeId) => {
+  const apiURL = `${GET_REGISTERED_EVENTS}${employeeId}`;
+
+  try {
+    const response = await axios.get(apiURL, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    return response;
+  } catch (error) {
+    console.error("Error in fetching Registered Events:", error);
+    throw error;
+  }
 };
