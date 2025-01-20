@@ -45,17 +45,7 @@ function ChallengeHome() {
     }
   };
 
-  // const handleMarkAsCompleted = (challengeId) => {
-  //     const confirm = window.confirm("Mark this challenge as completed?");
-  //     if (confirm) {
-  //         markChallengeAsCompleted(challengeId)
-  //             .then(() => {
-  //                 alert("Challenge marked as completed successfully!");
-  //                 window.location.reload();
-  //             })
-  //             .catch(err => console.log(err));
-  //     }
-  // };
+
 
   return (
     <>
@@ -110,7 +100,6 @@ function ChallengeHome() {
                     >
                       Delete
                     </button>
-                    {/* <button onClick={() => handleMarkAsCompleted(d.challengeId)} className='btn btn-sm btn-success'>Mark Completed</button> */}
 
                     <button
                       onClick={() => handleRegister(employeeId, d.challengeId)}

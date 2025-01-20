@@ -20,6 +20,7 @@ import {
 import {
   getRegisterdChallenges,
   markChallengeAsComplete,
+
 } from "../services/challengeService"; // Import API service
 import Home from "./home";
 
@@ -59,6 +60,7 @@ const RegisteredChallenges = () => {
 
   const handleFinish = () => {
     if (selectedChallenge) {
+      
       const updatedChallenges = challenges.map((challenge) =>
         challenge.challengeId === selectedChallenge.challengeId
           ? { ...challenge, challengeStatus: "Completed" }
@@ -81,6 +83,9 @@ const RegisteredChallenges = () => {
         });
     }
   };
+
+  
+  
 
   return (
     <>
@@ -109,8 +114,8 @@ const RegisteredChallenges = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {challenges.map((challenge) => (
-                  <TableRow key={challenge.challengeRegistrationId}>
+                {challenges.map((challenge,i) => (
+                  <TableRow key={i}>
                     <TableCell>{challenge.challengeId}</TableCell>
                     <TableCell>{challenge.challengeName}</TableCell>
                     <TableCell>{challenge.startDate}</TableCell>

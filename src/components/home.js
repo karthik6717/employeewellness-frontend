@@ -17,7 +17,9 @@ import {
   //Divider,
   CircularProgress,
 } from "@mui/material";
-import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+//import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+//import SpaTwoToneIcon from '@mui/icons-material/SpaTwoTone';
+import SpaRoundedIcon from '@mui/icons-material/SpaRounded';
 import { useNavigate } from "react-router-dom";
 import { getEmployeebyId } from "../services/employeeService";
 import  {jwtDecode} from "jwt-decode";
@@ -84,6 +86,7 @@ function Home() {
       ],
     },
     {
+     // icon:"/images/png_3r4o2f.png",
       name: "Wellness Program",
       id: "wellnessprogram",
       dropdown: [
@@ -159,17 +162,22 @@ function Home() {
       <Container sx={{ width: "100%", margin: "0px" }}>
         <Toolbar>
           <IconButton
-            size="large"
+            size="small"
             edge="start"
             color="inherit"
+            sx={{
+             
+              border: "2px solid white",
+            }}
             aria-label="logo"
             onClick={toggleDrawer(true)}
           >
-            <SelfImprovementIcon />
+            <SpaRoundedIcon />
           </IconButton>
           <Typography variant="h6" component="div">
             EmployeeWellness
           </Typography>
+
           <Stack direction="row" gap={3} sx={{ marginLeft: "auto" }}>
             {pages.map((page) => (
               <React.Fragment key={page.id}>
@@ -184,6 +192,14 @@ function Home() {
                       : () => handleNavigate(page.path, { employeeId })
                   }
                 >
+
+          {page.icon && (
+          <img src={page.icon} alt={`${page.name} icon`} style={{ width: "20px", height: "20px" }}/>
+        )}
+
+
+
+
                   {page.name}
                 </Button>
               </React.Fragment>

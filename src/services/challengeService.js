@@ -5,7 +5,7 @@ import { ADD_CHALLENGE } from "../constants/apiEndpoints";
 import { UPDATE_CHALLENGE } from "../constants/apiEndpoints";
 import { DELETE_CHALLENGE } from "../constants/apiEndpoints";
 import { SET_CHALLENGE_AS_COMPLETE } from "../constants/apiEndpoints";
-import { SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS } from "../constants/apiEndpoints";
+//import { SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS } from "../constants/apiEndpoints";
 
 //Register Challenge
 import { REGISTER_CHALLENGE } from "../constants/apiEndpoints";
@@ -140,15 +140,15 @@ export const markChallengeAsComplete = (
 
 // Complete challenges and add reward points
 
-export const setChallengesAsCompleteAddRewardPoints = (
-  employeeId,
-  challeId,
-  challengeStatus
-) => {
-  const apiURL = `${SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS}${employeeId}/${challeId}/${challengeStatus}`;
-  return axios.post(apiURL, {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
-};
+// export const setChallengesAsCompleteAddRewardPoints = (
+//   employeeId,
+//   challeId,
+//   challengeStatus
+// ) => {
+//   const apiURL = `${SET_COMPLETE_CHALLEGE_ADD_REWARD_POINTS}${employeeId}/${challeId}/${challengeStatus}`;
+//   return axios.post(apiURL, {
+//     headers: {
+//       Authorization: "Bearer " + localStorage.getItem("token"),
+//     },
+//   });
+// };
