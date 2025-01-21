@@ -32,7 +32,7 @@ function EmployeeUpdate() {
   });
 
   console.log(values);
-
+  
 
 
   useEffect(() => {
@@ -71,7 +71,9 @@ function EmployeeUpdate() {
     <div className="d-flex w-100  justify-content-center align-items-center bg-light">
       <div className="w-50 border bg-white shadow px-5 pt-3 pb-5 rounded">
         <h1>Update Employee</h1>
+        <div >
         <form onSubmit={handleUpdate}>
+    
           <div className="mb-2">
             <label htmlFor="employeeId">Employee ID:</label>
             <input
@@ -330,11 +332,12 @@ function EmployeeUpdate() {
               onChange={handleChange}
             />
             </div>
-
+            
 
           <button type="submit" className="btn btn-primary w-100">Update Employee</button>
           <Link to='/' className='btn btn-danger w-100 mt-2'>Back</Link>
         </form>
+        </div>
       </div>
     </div>
   );

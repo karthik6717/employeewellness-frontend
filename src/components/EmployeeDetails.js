@@ -4,13 +4,18 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useNavigate } from "react-router-dom";
 import { addEmployee } from "../services/employeeService";
+import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 //import axios from "axios";
 import {  Link} from "react-router-dom";
+import Home from "./home";
+//import '../App.css';
+ //import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const GENDERS = ["MALE", "FEMALE", "OTHER"];
 const ROLES = ["ADMIN", "USER"]; // Add actual roles
 const BLOOD_GROUPS = ["A_positive", "A_negative", "B_positive", "B_negative", "O_positive", "O_negative", "AB_positive", "AB_negative"];
 const MARITAL_STATUSES = ["SINGLE", "MARRIED", "DIVORCED", "Widowed"];
+
 
 const EmployeeDetails = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +42,9 @@ const EmployeeDetails = () => {
     nationality: "",
     totalRewardPoints: 0,
   });
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState("");
    const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,25 +59,39 @@ const EmployeeDetails = () => {
     e.preventDefault();
     try{
       await addEmployee(formData);
+      setDialogMessage("New Talent Onboarded successfully!");
+      setDialogOpen(true);
+
+      setTimeout(() => {
+        setDialogOpen(false);
       navigate("/employees");
-      alert("Employee added successfully");
+      }, 2000);
+      //alert("Employee added successfully");
 
     }
     catch(error)
     {
-        console.error("Error adding Employee");
-        alert("Failed to add employee. Please try again");
+       // console.error("Error adding Employee");
+        //alert("Failed to add employee. Please try again");
+      setDialogMessage("Failed to Onboard New Talent Check All Fields Enterd Correctly."); // Set error message
+      setDialogOpen(true);
+
+      setTimeout(() => {
+        setDialogOpen(false);
+      }, 2000);
+
     }
     
   };
 
-
   return (
+    <>
+    <Home/>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       {" "}
       {/* Wrap in LocalizationProvider */}
       <Typography variant="h4" textAlign="center" mt={2}>
-        <strong>Employee Form</strong>
+        <strong>Onboard New Talent</strong>
       </Typography>
       <Box
         component="form"
@@ -84,12 +106,13 @@ const EmployeeDetails = () => {
         }}
       >
         <TextField
-          label="Employee ID"
+          label="Associate Id"
           name="employeeId"
           value={formData.employeeId}
           onChange={handleChange}
           fullWidth
           required
+          color="success"
         />
         <TextField
           label="First Name"
@@ -98,6 +121,7 @@ const EmployeeDetails = () => {
           onChange={handleChange}
           fullWidth
           required
+          color="success"
         />
         <TextField
           label="Last Name"
@@ -105,15 +129,17 @@ const EmployeeDetails = () => {
           value={formData.lastName}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
-          label="Email"
+          label="Email "
           name="email"
           type="email"
           value={formData.email}
           onChange={handleChange}
           fullWidth
           required
+          color="success"
         />
         <TextField
           label="Password"
@@ -123,6 +149,7 @@ const EmployeeDetails = () => {
           onChange={handleChange}
           fullWidth
           required
+          color="success"
         />
         <TextField
           label="Contact Number"
@@ -130,6 +157,7 @@ const EmployeeDetails = () => {
           value={formData.contactNumber}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
           label="Department"
@@ -137,13 +165,22 @@ const EmployeeDetails = () => {
           value={formData.department}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
 
         <DatePicker
           label="Date of Birth"
+          className="date-picker"
           value={formData.dateOfBirth}
           onChange={(value) => handleDateChange("dateOfBirth", value)}
-          renderInput={(params) => <TextField {...params} fullWidth />}
+         // labelcolor="green"
+          renderInput={(params) => (
+          
+          <TextField  {...params}  fullWidth 
+          color="success" />
+         
+          )}
+          
         />
 
         <TextField
@@ -153,6 +190,8 @@ const EmployeeDetails = () => {
           value={formData.gender}
           onChange={handleChange}
           fullWidth
+          color="success"
+          
         >
           {GENDERS.map((gender) => (
             <MenuItem key={gender} value={gender}>
@@ -168,6 +207,7 @@ const EmployeeDetails = () => {
           onChange={handleChange}
           fullWidth
           type="number"
+          color="success"
         />
         <TextField
           label="Height (cm)"
@@ -176,6 +216,7 @@ const EmployeeDetails = () => {
           onChange={handleChange}
           fullWidth
           type="number"
+          color="success"
         />
 
         <TextField
@@ -185,6 +226,7 @@ const EmployeeDetails = () => {
           value={formData.role}
           onChange={handleChange}
           fullWidth
+          color="success"
         >
           {ROLES.map((role) => (
             <MenuItem key={role} value={role}>
@@ -198,6 +240,7 @@ const EmployeeDetails = () => {
           value={formData.dateOfJoining}
           onChange={(value) => handleDateChange("dateOfJoining", value)}
           renderInput={(params) => <TextField {...params} fullWidth />}
+          color="success"
         />
 
         <TextField
@@ -206,6 +249,7 @@ const EmployeeDetails = () => {
           value={formData.hobbies}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
           label="Address"
@@ -213,6 +257,7 @@ const EmployeeDetails = () => {
           value={formData.address}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
           label="Sports Interest"
@@ -220,6 +265,7 @@ const EmployeeDetails = () => {
           value={formData.sportsInterest}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
           label="Medical History"
@@ -227,6 +273,7 @@ const EmployeeDetails = () => {
           value={formData.medicalHistory}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
           label="Emergency Contact"
@@ -234,6 +281,7 @@ const EmployeeDetails = () => {
           value={formData.emergencyContact}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
         <TextField
           select
@@ -242,6 +290,7 @@ const EmployeeDetails = () => {
           value={formData.bloodGroup}
           onChange={handleChange}
           fullWidth
+          color="success"
         >
           {BLOOD_GROUPS.map((bg) => (
             <MenuItem key={bg} value={bg}>
@@ -256,6 +305,7 @@ const EmployeeDetails = () => {
           value={formData.maritalStatus}
           onChange={handleChange}
           fullWidth
+          color="success"
         >
           {MARITAL_STATUSES.map((status) => (
             <MenuItem key={status} value={status}>
@@ -269,14 +319,22 @@ const EmployeeDetails = () => {
           value={formData.nationality}
           onChange={handleChange}
           fullWidth
+          color="success"
         />
 
         <Button type="submit" variant="contained" color="success" fullWidth sx={{gridColumn: "2 / 3"}}>
           Submit
         </Button>
-        <Link to='/' className='btn btn-primary ms-3'> Back</Link>
+        <Link to='/dashboard' className='btn btn-primary ms-3'> Home</Link>
       </Box>
     </LocalizationProvider>
+    {/* Dialog Box */}
+    <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
+        <DialogContent>
+          <DialogContentText>{dialogMessage}</DialogContentText>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

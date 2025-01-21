@@ -15,7 +15,9 @@ import {
   ListItem,
   ListItemText,
   //Divider,
+  //Grow,
   CircularProgress,
+  //Slide
 } from "@mui/material";
 //import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 //import SpaTwoToneIcon from '@mui/icons-material/SpaTwoTone';
@@ -62,14 +64,14 @@ function Home() {
 
   const pages = [
     {
-      name: "Employees",
+      name: "Associates",
       id: "employees",
       dropdown: [
-        { label: "Add Employee", path: "/add-employee" },
-        { label: "Get All Employees", path: "/employees" },
-        { label: "Get Employee By Id", path: "/employeeSearch" },
-        { label: "Update Employee Details", path: "/employees" },
-        { label: "Delete Employee", path: "/employees" },
+        { label: "Onboard New Talent", path: "/add-employee" },
+        { label: "Browse All Profiles", path: "/employees" },
+        { label: "Lookup Associate ", path: "/employeeSearch" },
+        { label: "Refine Associate Profile", path: "/employees" },
+        { label: "Farewell to Associates", path: "/employees" },
       ],
     },
     {
@@ -296,6 +298,7 @@ function Home() {
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
+      
         sx={{
           "& .MuiPaper-root": {
             boxShadow: "none",
@@ -304,7 +307,17 @@ function Home() {
         }}
       >
         {currentDropdown.map((item, index) => (
-          <MenuItem key={index} onClick={() => handleNavigate(item.path, { employeeId })}>
+          <MenuItem key={index} onClick={() => handleNavigate(item.path, { employeeId })}
+          sx={{
+            
+           // backgroundColor: "lightgreen", // Set background color
+          //  color: "white", // Set text color
+            "&:hover": {
+              color: "white",
+              backgroundColor: "#267a0f", // Change background on hover
+            },
+          }}
+          >
             {item.label}
           </MenuItem>
         ))}

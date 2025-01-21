@@ -41,23 +41,23 @@ function EmployeeHome() {
     <Home/>
     <div className='d-flex flex-column justify-content-center align-items-center bg-light vh-100'>
         
-     <h1>List Of Users</h1>
+     <h1>List Of  All Profiles</h1>
      
      <div className='w-80 rounded bg-white border shadow p-4'>
      <div className='d-flex justify-content-end mb-2'>
-         <Link to="/add-employee" className='btn btn-success'>Add +</Link>
+         <Link to="/add-employee" className='btn btn-success'>Onboard New Talent +</Link>
         </div>
        <table className='table table-bordered'>
         <thead>
             <tr>
-                <th>Employee ID</th>
+                <th>Associate Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Password</th>
                 <th>Contact Number</th>
                 <th>Department</th>
-                <th>TotalRewardPoints</th>             
+                <th>Total Reward Points</th>             
                 <th>Action</th>
             </tr>
         </thead>
@@ -75,14 +75,15 @@ function EmployeeHome() {
                     <td>{d.totalRewardPoints}</td>
                     <td>
                         <Link to={`/employeeRead/${d.employeeId}`} className='btn btn-sm btn-info me-2'>Read</Link>
-                        <Link to={`/employeeUpdate/${d.employeeId}`} className='btn btn-sm btn-primary me-2'>Edit</Link>
-                        <button onClick={e=>handleDelete(d.employeeId)} className='btn btn-sm btn-danger'>Delete</button>
+                        <Link to={`/employeeUpdate/${d.employeeId}`} className='btn btn-sm btn-primary me-2'>Refine</Link>
+                        <button onClick={e=>handleDelete(d.employeeId)} className='btn btn-sm btn-danger'>Remove</button>
                     </td>
                  </tr>   
                 )) : <tr><td colSpan={9}>No Employees Found</td></tr>
             }
         </tbody>
        </table>
+        <Link to='/dashboard' className='btn btn-primary ms-3'> Home</Link>
        </div>
        </div> 
        </>
